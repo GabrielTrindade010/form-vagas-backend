@@ -144,9 +144,14 @@ class PdfLibService extends IPdfService {
       const pdfBytes = await pdfDoc.save();
       
       const fileName = `application_${application.id}.pdf`;
-      const uploadsDir = path.join(__dirname, '../../../uploads');
+      
+      // Determine uploads directory (Vercel has read-only FS, must use /tmp)
+      const uploadsDir = process.env.VERCEL 
+        ? '/tmp' 
+        : path.join(__dirname, '../../../uploads');
+
       if (!fs.existsSync(uploadsDir)) {
-        fs.mkdirSync(uploadsDir);
+        fs.mkdirSync(uploadsDir, { recursive: true });
       }
       
       const filePath = path.join(uploadsDir, fileName);

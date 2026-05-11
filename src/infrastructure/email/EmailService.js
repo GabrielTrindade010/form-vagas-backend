@@ -22,7 +22,11 @@ class EmailService {
   }
 
   async sendApplicationEmail(application, pdfFileName) {
-    const pdfPath = path.join(__dirname, '../../../uploads', pdfFileName);
+    const uploadsDir = process.env.VERCEL 
+      ? '/tmp' 
+      : path.join(__dirname, '../../../uploads');
+      
+    const pdfPath = path.join(uploadsDir, pdfFileName);
     
     if (!fs.existsSync(pdfPath)) {
       throw new Error('Arquivo PDF não encontrado para envio por e-mail.');
