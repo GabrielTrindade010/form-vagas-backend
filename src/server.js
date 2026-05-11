@@ -1,3 +1,6 @@
+// Force IPv4 DNS resolution globally — required on Render (blocks outbound IPv6)
+require('dns').setDefaultResultOrder('ipv4first');
+
 const app = require('./app');
 const sequelize = require('./infrastructure/database');
 const { setupAssociations } = require('./infrastructure/database/associations');
