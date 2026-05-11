@@ -35,11 +35,11 @@ class EmailService {
     const mailOptions = {
       from: `"Solicitação de Trabalho " <${process.env.SMTP_USER}>`,
       to: 'sidnei.trindade@formeld.com',
-      subject: `Nova Candidatura: ${application.nomeVaga} - ${application.fullName}`,
-      text: `Olá,\n\nUma nova candidatura foi recebida.\n\nCandidato: ${application.fullName}\nVaga: ${application.nomeVaga}\nE-mail: ${application.email || 'Não informado'}\nTelefone: ${application.phone}\n\nO formulário completo está em anexo.`,
+      subject: `Solicitação de Trabalho: ${application.nomeVaga} - ${application.fullName}`,
+      text: `Olá,\n\nUma nova solicitação de trabalho foi recebida.\n\nCandidato: ${application.fullName}\nVaga: ${application.nomeVaga}\nE-mail: ${application.email || 'Não informado'}\nTelefone: ${application.phone}\n\nO formulário completo está em anexo.`,
       attachments: [
         {
-          filename: `Candidatura_${application.fullName.replace(/\s+/g, '_')}.pdf`,
+          filename: `Solicitação_de_Trabalho_${application.fullName.replace(/\s+/g, '_')}.pdf`,
           path: pdfPath,
         },
       ],
