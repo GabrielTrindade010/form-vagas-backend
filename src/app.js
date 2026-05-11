@@ -9,6 +9,10 @@ const rateLimit = require('express-rate-limit');
 
 const app = express();
 
+// Required for Render (and other reverse proxies) so that
+// express-rate-limit can read the real IP from X-Forwarded-For
+app.set('trust proxy', 1);
+
 // Security middlewares
 app.use(helmet({
   crossOriginResourcePolicy: false, // Permite carregar recursos de outras origens se necessário

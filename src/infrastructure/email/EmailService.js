@@ -4,14 +4,20 @@ const fs = require('fs');
 
 class EmailService {
   constructor() {
+    const port = parseInt(process.env.SMTP_PORT, 10) || 587;
     this.transporter = nodemailer.createTransport({
       host: process.env.SMTP_HOST,
-      port: process.env.SMTP_PORT,
-      secure: process.env.SMTP_SECURE === 'true',
+      port,
+      // port 465 = SSL (secure:true), port 587 = STARTTLS (secure:false)
+      secure: port === 465,
       auth: {
         user: process.env.SMTP_USER,
         pass: process.env.SMTP_PASS,
       },
+      // Force IPv4 — Render free tier blocks outbound IPv6
+      family: 4,
+      connectionTimeout: 10000,
+      greetingTimeout: 10000,
     });
   }
 
