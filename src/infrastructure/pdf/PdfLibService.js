@@ -6,7 +6,7 @@ const IPdfService = require('../../domain/IPdfService');
 class PdfLibService extends IPdfService {
   async generate(application) {
     try {
-      const templatePath = path.join(__dirname, '../../../../template.pdf');
+      const templatePath = path.join(__dirname, '../../../template.pdf');
       if (!fs.existsSync(templatePath)) {
         throw new Error('Arquivo template.pdf não encontrado na raiz do projeto.');
       }
