@@ -36,7 +36,14 @@ class EmailService {
       from: `"Solicitação de Trabalho " <${process.env.SMTP_USER}>`,
       to: 'sidnei.trindade@formeld.com',
       subject: `Solicitação de Trabalho: ${application.nomeVaga} - ${application.fullName}`,
-      text: `Olá,\n\nUma nova solicitação de trabalho foi recebida.\n\nCandidato: ${application.fullName}\nVaga: ${application.nomeVaga}\nE-mail: ${application.email || 'Não informado'}\nTelefone: ${application.phone}\n\nO formulário completo está em anexo.`,
+      text: `Olá,
+
+Segue formulário de solicitação de trabalho para pesquisa social.
+
+Candidato: ${application.fullName}
+Vaga: ${application.nomeVaga}
+E-mail: ${application.email || 'Não informado'}
+Telefone: ${application.phone}`,
       attachments: [
         {
           filename: `Solicitação_de_Trabalho_${application.fullName.replace(/\s+/g, '_')}.pdf`,
