@@ -3,6 +3,7 @@ const crypto = require('crypto');
 class Application {
   constructor(props, id = null) {
     this.id = id || crypto.randomUUID();
+    this.entrevistador = props.entrevistador;
     this.nomeVaga = props.nomeVaga;
     this.fullName = props.fullName;
     this.phone = props.phone;

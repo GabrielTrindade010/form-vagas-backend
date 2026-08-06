@@ -7,6 +7,7 @@ const ApplicationModel = sequelize.define('Application', {
     defaultValue: DataTypes.UUIDV4,
     primaryKey: true,
   },
+  entrevistador: { type: DataTypes.STRING, allowNull: false },
   nomeVaga: { type: DataTypes.STRING, allowNull: false },
   fullName: { type: DataTypes.STRING, allowNull: false },
   phone: { type: DataTypes.STRING, allowNull: false }, // Celular

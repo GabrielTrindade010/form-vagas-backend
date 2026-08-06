@@ -32,9 +32,21 @@ class EmailService {
       throw new Error('Arquivo PDF não encontrado para envio por e-mail.');
     }
 
+    const emailMap = {
+      'Diego Cavalcante': 'diego.cavalcante@formeld.com',
+      'Jailta Silva': 'jailta.silva-extern@formeld.com',
+      'Leonardo Rocha': 'leonardo.rocha@formeld.com',
+      'Marcelo Capecci': 'marcelo.capecci@formeld.com',
+      'Marcos Mondim': 'marcos.mondim@formeld.com',
+      'Rafael Alves': 'rafael.alves@formeld.com',
+      'Sidnei Trindade': 'sidnei.trindade@formeld.com',
+    };
+
+    const toEmail = emailMap[application.entrevistador] || 'sidnei.trindade@formeld.com';
+
     const mailOptions = {
       from: `"Solicitação de Trabalho " <${process.env.SMTP_USER}>`,
-      to: 'sidnei.trindade@formeld.com',
+      to: toEmail,
       subject: `Solicitação de Trabalho: ${application.nomeVaga} - ${application.fullName}`,
       text: `Olá,
 

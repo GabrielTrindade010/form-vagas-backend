@@ -7,6 +7,7 @@ class SequelizeApplicationRepository extends IApplicationRepository {
     try {
       const createdApplication = await ApplicationModel.create({
         id: application.id,
+        entrevistador: application.entrevistador,
         nomeVaga: application.nomeVaga,
         fullName: application.fullName,
         phone: application.phone,
@@ -64,6 +65,7 @@ class SequelizeApplicationRepository extends IApplicationRepository {
     if (!app) return null;
     
     return new Application({
+      entrevistador: app.entrevistador,
       nomeVaga: app.nomeVaga,
       fullName: app.fullName,
       phone: app.phone,

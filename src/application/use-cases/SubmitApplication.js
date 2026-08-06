@@ -10,6 +10,7 @@ class SubmitApplication {
   async execute(data) {
     // 1. Create Domain Entity (Validation happens here)
     const application = new Application({
+      entrevistador: data.entrevistador,
       nomeVaga: data.nomeVaga,
       fullName: data.fullName,
       phone: data.phone,
