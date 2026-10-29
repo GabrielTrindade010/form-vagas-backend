@@ -40,6 +40,7 @@ class EmailService {
       'Marcos Mondim': 'marcos.mondim@formeld.com',
       'Rafael Alves': 'rafael.alves@formeld.com',
       'Sidnei Trindade': 'sidnei.trindade@formeld.com',
+      'Flávio Silva': 'flavio.silva@formeld.com',
     };
 
     const toEmail = emailMap[application.entrevistador] || 'sidnei.trindade@formeld.com';
